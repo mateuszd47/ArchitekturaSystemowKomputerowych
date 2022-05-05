@@ -1,0 +1,156 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	html,
+	body {
+		height: 100%;
+		overscroll-behavior-y: none;
+		background-color: rgb(58, 56, 56);
+		color: whitesmoke;
+		line-height: 1.4;
+		.App {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			header {
+				width: 100%;
+				min-width: 400px;
+				height: 80px;
+				margin: 0;
+				background-color: rgb(138, 128, 128);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			main {
+				width: 100%;
+				height: 100%;
+				padding: 40px;
+				min-height: calc(100vh - 80px - 60px);
+				display: flex;
+				align-items: flex-start;
+				flex-direction: row;
+				justify-content: space-between;
+				background-color: rgb(58, 56, 56);
+				.inputs16bit {
+					width: 100%;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					flex-direction: column;
+					input {
+						background-color: rgb(250, 250, 250);
+						border-radius: 100px;
+						border-style: none;
+						box-shadow: 0px 5px 15px grey;
+						width: 100px;
+						height: 20px;
+						margin: 4px;
+						padding: 15px;
+					}
+					input:hover {
+						background-color: rgb(175, 175, 175);
+						box-shadow: 0 5px 30px grey;
+						cursor: pointer;
+					}
+					input:focus {
+						border-style: none;
+						outline: 0;
+					}
+					.tableZNA{
+						padding-top: 20px;
+					}
+					.checkbox {
+						width: 15px;
+						height: 15px;
+					}
+				}
+				.inputs2x8bit {
+					width: 100%;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					flex-direction: column;
+					input {
+						background-color: rgb(250, 250, 250);
+						border-radius: 100px;
+						border-style: none;
+						box-shadow: 0px 5px 15px grey;
+						width: 100px;
+						height: 20px;
+						margin: 4px;
+						padding: 15px;
+					}
+					input:hover {
+						background-color: rgb(175, 175, 175);
+						box-shadow: 0 5px 30px grey;
+						cursor: pointer;
+					}
+					input:focus {
+						border-style: none;
+						outline: 0;
+					}
+					.tableZNA{
+						padding-top: 20px;
+					}
+					.checkbox {
+						width: 15px;
+						height: 15px;
+					}
+				}
+				.buttons {
+					width: 100%;
+					max-width: 200px;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					flex-direction: column;
+					input {
+						border-radius: 100px;
+						border-style: none;
+						color: white;
+						box-shadow: 0 5px 15px grey;
+						width: 150px;
+						height: 40px;
+						margin-top: 10px;
+						font-size: 15px;
+						cursor: pointer;
+					}
+					input:hover {
+						background-color: white;
+					}
+					.button {
+						background-color: #1e81a8;
+					}
+					.button:hover {
+						color: #1e81a8;
+					}
+					.reset {
+						background-color: #a82e1e;
+					}
+					.reset:hover {
+						color: #a82e1e;
+					}
+				}
+			}
+			footer {
+				width: 100%;
+				min-width: 400px;
+				height: 60px;
+				background-color: rgb(58, 56, 56);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding-left: 40px;
+				.max-width {
+					max-width: 800px;
+					width: 100%;
+					.footer_item {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
