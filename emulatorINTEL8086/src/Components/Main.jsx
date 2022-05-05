@@ -1,6 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 
 const Main = () => {
+	const [value, setValue] = useState("");
+  const onChange = e => {
+    const input = e.currentTarget.value;
+    if (/^[0-9a-fA-F]+$/.test(input) || input === "") {
+      setValue(input);
+    }
+  };
 	return (
 		<main>
 			<div className='inputs16bit'>
@@ -12,7 +19,10 @@ const Main = () => {
 						type='text'
 						name='AX'
 						maxLength='4'
+						value={value}
+						onChange={onChange}
 						placeholder='0000'
+
 					/>
 				</label>
 				<label>
@@ -22,6 +32,8 @@ const Main = () => {
 						type='text'
 						name='BX'
 						maxLength='4'
+						value={value}
+						onChange={onChange}
 						placeholder='0000'
 					/>
 				</label>
@@ -32,6 +44,8 @@ const Main = () => {
 						type='text'
 						name='CX'
 						maxLength='4'
+						value={value}
+						onChange={onChange}
 						placeholder='0000'
 					/>
 				</label>
@@ -42,6 +56,8 @@ const Main = () => {
 						type='text'
 						name='DX'
 						maxLength='4'
+						value={value}
+						onChange={onChange}
 						placeholder='0000'
 					/>
 				</label>
@@ -131,6 +147,8 @@ const Main = () => {
 									type='text'
 									name='AL'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -140,6 +158,8 @@ const Main = () => {
 									type='text'
 									name='AH'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -152,6 +172,8 @@ const Main = () => {
 									type='text'
 									name='BL'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -161,6 +183,8 @@ const Main = () => {
 									type='text'
 									name='BH'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -173,6 +197,8 @@ const Main = () => {
 									type='text'
 									name='CL'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -182,6 +208,8 @@ const Main = () => {
 									type='text'
 									name='CH'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -194,6 +222,8 @@ const Main = () => {
 									type='text'
 									name='CL'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
@@ -203,6 +233,8 @@ const Main = () => {
 									type='text'
 									name='CH'
 									maxLength='2'
+									value={value}
+									onChange={onChange}
 									placeholder='00'
 								/>
 							</td>
