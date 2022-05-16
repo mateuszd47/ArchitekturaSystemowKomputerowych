@@ -22,12 +22,23 @@ const Inputs16bit = () => {
 		}
 	};
 
+  const reset = () => {
+		setValues({
+			AX: localStorage.setItem("AX", JSON.stringify("")),
+		  BX: localStorage.setItem("BX", JSON.stringify("")),
+		  CX: localStorage.setItem("CX", JSON.stringify("")),
+		  DX: localStorage.setItem("DX", JSON.stringify("")),
+		});
+    window.location.reload(false);
+	};
+
 	const mov = () => {
 		setValues({
 			[radioOn]: JSON.parse(localStorage.getItem(radioWith)),
 		});
     localStorage.setItem([radioOn], JSON.stringify(JSON.parse(localStorage.getItem(radioWith))))
 	};
+  
 	const xchg = () => {
     let tab = [JSON.parse(localStorage.getItem(radioOn)), JSON.parse(localStorage.getItem(radioWith))]
     console.log(tab)
@@ -39,8 +50,9 @@ const Inputs16bit = () => {
     localStorage.setItem([radioOn], JSON.stringify(tab[1]))
 	};
 	return (
-		<form className='inputs16bit'>
-			<h3>16bit</h3>
+		<>
+      <div className='inputs16bit'>
+      <h3>16bit</h3>
 			<label>
 				AX:
 				<input
@@ -203,22 +215,16 @@ const Inputs16bit = () => {
 					</tr>
 				</tbody>
 			</table>
-			{/* {console.log("on " + radioOn)}
-			{console.log("with " + radioWith)} */}
-			<input
-				className='button'
-				type='button'
-				value='MOV'
-				onClick={() => mov()}
-			/>
-			<input
-				className='button'
-				type='button'
-				value='xchg'
-				onClick={() => xchg()}
-			/>
-		</form>
+      </div>
+			
+			<div className='buttons'>
+				<input className='button' type='button' value='MOV' onClick={mov} />
+				<input className='button' type='button' value='XCHG' onClick={xchg}/>
+				<input className='reset' type='button' value='RESET' onClick={reset}/>
+			</div>
+		</>
 	);
 };
 
 export default Inputs16bit;
+
