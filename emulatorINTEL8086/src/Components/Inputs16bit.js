@@ -17,8 +17,8 @@ const Inputs16bit = () => {
 			setValues({
 				...values,
 				[name]: value,
+        [name]: localStorage.setItem([name], JSON.stringify(value))
 			});
-			localStorage.setItem([name], JSON.stringify(value));
 		}
 	};
 
@@ -29,57 +29,17 @@ const Inputs16bit = () => {
     localStorage.setItem([radioOn], JSON.stringify(JSON.parse(localStorage.getItem(radioWith))))
 	};
 	const xchg = () => {
+    let tab = [JSON.parse(localStorage.getItem(radioOn)), JSON.parse(localStorage.getItem(radioWith))]
+    console.log(tab)
     setValues({
       [radioWith]: JSON.parse(localStorage.getItem(radioOn)),
 			[radioOn]: JSON.parse(localStorage.getItem(radioWith)),
 		});
-    ///////////////////////////////////////////////////////////////
-    if(typeof values.AX !== "undefined")
-    {
-      localStorage.setItem("AX", JSON.stringify(values.AX))
-    }
-    else
-    {
-      localStorage.setItem("AX", JSON.stringify(""))
-    }
-  
-    ///////////////////////////////////////////////////////////////
-    if(typeof values.BX !== "undefined")
-    {
-      localStorage.setItem("BX", JSON.stringify(values.BX))
-    }
-    else
-    {
-      localStorage.setItem("BX", JSON.stringify(""))
-    }
-  
-    ///////////////////////////////////////////////////////////////
-    if(typeof values.CX !== "undefined")
-    {
-      localStorage.setItem("CX", JSON.stringify(values.CX))
-    }
-    else
-    {
-      localStorage.setItem("CX", JSON.stringify(""))
-    }
-  
-    ///////////////////////////////////////////////////////////////
-    if(typeof values.DX !== "undefined")
-    {
-      localStorage.setItem("DX", JSON.stringify(values.DX))
-    }
-    else
-    {
-      localStorage.setItem("DX", JSON.stringify(""))
-    }
-    ///////////////////////////////////////////////////////////////
-    // window.location.reload(false);
-
-
-    
+    localStorage.setItem([radioWith], JSON.stringify(tab[0]))
+    localStorage.setItem([radioOn], JSON.stringify(tab[1]))
 	};
 	return (
-		<section className='inputs16bit'>
+		<form className='inputs16bit'>
 			<h3>16bit</h3>
 			<label>
 				AX:
@@ -257,7 +217,7 @@ const Inputs16bit = () => {
 				value='xchg'
 				onClick={() => xchg()}
 			/>
-		</section>
+		</form>
 	);
 };
 
