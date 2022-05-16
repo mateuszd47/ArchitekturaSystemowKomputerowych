@@ -5,10 +5,10 @@ const Inputs16bit = () => {
 	const [radioWith, setRadioWith] = useState("");
 
 	const [values, setValues] = useState({
-		AX: "",
-		BX: "",
-		CX: "",
-		DX: "",
+		AX: JSON.parse(localStorage.getItem("AX")),
+		BX: JSON.parse(localStorage.getItem("BX")),
+		CX: JSON.parse(localStorage.getItem("CX")),
+		DX: JSON.parse(localStorage.getItem("DX")),
 	});
 
 	const onChange = (e) => {
@@ -18,17 +18,66 @@ const Inputs16bit = () => {
 				...values,
 				[name]: value,
 			});
+			localStorage.setItem([name], JSON.stringify(value));
 		}
 	};
 
-  function mov(){
+	const mov = () => {
+		setValues({
+			[radioOn]: JSON.parse(localStorage.getItem(radioWith)),
+		});
+    localStorage.setItem([radioOn], JSON.stringify(JSON.parse(localStorage.getItem(radioWith))))
+	};
+	const xchg = () => {
+    setValues({
+      [radioWith]: JSON.parse(localStorage.getItem(radioOn)),
+			[radioOn]: JSON.parse(localStorage.getItem(radioWith)),
+		});
+    ///////////////////////////////////////////////////////////////
+    if(typeof values.AX !== "undefined")
+    {
+      localStorage.setItem("AX", JSON.stringify(values.AX))
+    }
+    else
+    {
+      localStorage.setItem("AX", JSON.stringify(""))
+    }
+  
+    ///////////////////////////////////////////////////////////////
+    if(typeof values.BX !== "undefined")
+    {
+      localStorage.setItem("BX", JSON.stringify(values.BX))
+    }
+    else
+    {
+      localStorage.setItem("BX", JSON.stringify(""))
+    }
+  
+    ///////////////////////////////////////////////////////////////
+    if(typeof values.CX !== "undefined")
+    {
+      localStorage.setItem("CX", JSON.stringify(values.CX))
+    }
+    else
+    {
+      localStorage.setItem("CX", JSON.stringify(""))
+    }
+  
+    ///////////////////////////////////////////////////////////////
+    if(typeof values.DX !== "undefined")
+    {
+      localStorage.setItem("DX", JSON.stringify(values.DX))
+    }
+    else
+    {
+      localStorage.setItem("DX", JSON.stringify(""))
+    }
+    ///////////////////////////////////////////////////////////////
+    // window.location.reload(false);
+
+
     
-    // const { name, value } = e.target;
-    // setValues({
-    //   ...values,
-    //   [name]: value,
-    // });
-  }
+	};
 	return (
 		<section className='inputs16bit'>
 			<h3>16bit</h3>
@@ -97,7 +146,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='with'
 									value='AX'
-									onChange={(e) => setRadioOn(e.target.value)}
+									onChange={(e) => setRadioWith(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -109,7 +158,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='on'
 									value='AX'
-									onChange={(e) => setRadioWith(e.target.value)}
+									onChange={(e) => setRadioOn(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -123,7 +172,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='with'
 									value='BX'
-									onChange={(e) => setRadioOn(e.target.value)}
+									onChange={(e) => setRadioWith(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -135,7 +184,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='on'
 									value='BX'
-									onChange={(e) => setRadioWith(e.target.value)}
+									onChange={(e) => setRadioOn(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -149,7 +198,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='with'
 									value='CX'
-									onChange={(e) => setRadioOn(e.target.value)}
+									onChange={(e) => setRadioWith(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -161,7 +210,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='on'
 									value='CX'
-									onChange={(e) => setRadioWith(e.target.value)}
+									onChange={(e) => setRadioOn(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -175,7 +224,7 @@ const Inputs16bit = () => {
 									type='radio'
 									name='with'
 									value='DX'
-									onChange={(e) => setRadioOn(e.target.value)}
+									onChange={(e) => setRadioWith(e.target.value)}
 								/>
 							</label>
 						</td>
@@ -187,15 +236,27 @@ const Inputs16bit = () => {
 									type='radio'
 									name='on'
 									value='DX'
-									onChange={(e) => setRadioWith(e.target.value)}
+									onChange={(e) => setRadioOn(e.target.value)}
 								/>
 							</label>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			{console.log(radioOn)}
-			{console.log(radioWith)}
+			{/* {console.log("on " + radioOn)}
+			{console.log("with " + radioWith)} */}
+			<input
+				className='button'
+				type='button'
+				value='MOV'
+				onClick={() => mov()}
+			/>
+			<input
+				className='button'
+				type='button'
+				value='xchg'
+				onClick={() => xchg()}
+			/>
 		</section>
 	);
 };
