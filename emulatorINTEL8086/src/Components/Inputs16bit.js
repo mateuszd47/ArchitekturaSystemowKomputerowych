@@ -60,7 +60,6 @@ const Inputs16bit = () => {
 	return (
 		<>
 			<div className='inputs16bit'>
-				<h3>16bit</h3>
 				<label>
 					AX:
 					<input
@@ -226,9 +225,9 @@ const Inputs16bit = () => {
 			</div>
 
 			<div className='buttons'>
-				<input className='button' type='button' value='MOV' onClick={mov} />
-				<input className='button' type='button' value='XCHG' onClick={xchg} />
-				<input className='reset' type='button' value='RESET' onClick={reset} />
+				<button className='button' type='button' onClick={mov} >MOV</button>
+				<button className='button' type='button' onClick={xchg} >XCHG</button>
+				<button className='reset' type='button' onClick={reset} >RESET</button>
 			</div>
 		</>
 	);
